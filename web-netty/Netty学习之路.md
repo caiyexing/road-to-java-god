@@ -22,7 +22,7 @@ IO、BIO、NIO、AIO的区别
 - `BIO` 是阻塞的，`NIO` 则是非阻塞的。
 - `BIO` 基于字节流和字符流进行操作，而 `NIO` 基于 `Channel`（通道）和 `Buffer`（缓冲区）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。`Selector`（选择器）用于监听多个通道的事件（比如：连接请求，数据到达等），因此使用单个线程就可以监听多个客户端通道。
 
-![image-20241223101649603](G:\SP\Netty\web-netty\src\main\resources\pic\Netty学习之路\image-20241223101649603.png)
+![image-20241223101649603](G:\SP\road-to-java-god\web-netty\src\main\resources\pic\Netty学习之路\image-20241223101649603.png)
 
 NIO特性：
 
@@ -92,8 +92,9 @@ NIO特性：
 #### 关于Buffer和Channel的细节
 
 1. `ByteBuffer` 支持类型化的 `put` 和 `get`，`put` 放入的是什么数据类型，`get` 就应该使用相应的数据类型来取出，否则可能有 `BufferUnderflowException` 异常
-
-
+2. 可以将一个普通 Buffer 转成只读 Buffer
+3. `NIO` 还提供了 `MappedByteBuffer`，可以让文件直接在内存（堆外的内存）中进行修改，而如何同步到文件由 `NIO` 来完成
+4. `NIO` 还支持通过多个 `Buffer`（即 `Buffer`数组）完成读写操作，即 `Scattering` 和 `Gathering`
 
 
 
